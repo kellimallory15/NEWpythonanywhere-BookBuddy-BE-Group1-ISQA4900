@@ -2,11 +2,15 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
 from . import views
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
 
 urlpatterns = [
     # Reader URLs
     path('', views.reader_list),
     path('api-auth', include('rest_framework.urls')),
+    path('api/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/readers/', views.reader_list, name='reader-list'),
     path('api/readers/<int:pk>/', views.getReader, name='reader-detail'),
     path('api/books/', views.book_list, name='book-list'),
