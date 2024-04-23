@@ -8,13 +8,13 @@ from rest_framework.validators import UniqueValidator
 class ReaderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reader
-        fields = ('user', 'name', 'address', 'reader_num', 'city', 'state', 'zipcode',
+        fields = ('pk', 'user', 'name', 'address', 'reader_num', 'city', 'state', 'zipcode',
                   'email', 'created_date', 'updated_date')
 
 class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
-        fields = ('author', 'series_num', 'genre', 'summary', 'publisher', 'published_date',
+        fields = ('pk', 'author', 'series_num', 'genre', 'summary', 'publisher', 'published_date',
                   'page_total', 'title')
 
 class AuthorSerializer(serializers.ModelSerializer):
@@ -25,13 +25,13 @@ class AuthorSerializer(serializers.ModelSerializer):
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
-        fields = ('book', 'reader', 'title', 'text', 'rating',
+        fields = ('pk', 'book', 'reader', 'title', 'text', 'rating',
                   'created_date', 'edited_date')
 
 class BookBuddySerializer(serializers.ModelSerializer):
     class Meta:
         model = BookBuddy
-        fields = ('book', 'reader', 'fav_status', 'read_status', 'read_later_status',
+        fields = ('pk', 'book', 'reader', 'fav_status', 'read_status', 'read_later_status',
                   'currently_reading', 'current_page', 'last_read')
 
 
